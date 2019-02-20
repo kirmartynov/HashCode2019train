@@ -15,6 +15,7 @@ using namespace std;
 struct Input {
 	int r, c, l, h;
 	vector<vector<int> > grid;
+    bool transposed;
 };
 
 struct Rect{
@@ -42,4 +43,25 @@ void readInput(Input& input, istream& in) {
             else
                 input.grid[i][j] = 0;
     }
+    input.transposed = false;
 }
+
+
+void transposeGrid(Input &input)    {
+    vector<vector<int> > grid;
+    
+    // transpose
+    grid.resize(input.c);
+    for (int i = 0; i < input.c; i++)
+    {
+        grid[i].resize(input.r);
+        for (int j = 0; j < input.r; j++)
+            grid[i][j] = input.grid[j][i];
+    } 
+    // update the grid and dimensions
+    input.grid = grid;
+    input.r = input.grid.size();
+    input.c = input.grid[0].size();
+    input.transposed = !input.transposed;
+}
+
