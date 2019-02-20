@@ -11,7 +11,8 @@ bool checkSlice(vector<vector<int> > &pizza, int l, int h, Rect r) {
     int c = 0;
     for (int i=r.x1; i<=r.x2; i++){
         for (int j=r.y1; j<=r.y2; j++){
-            if (pizza[i][j]==-1) return false;
+            if (pizza[i][j]==-1)
+            	return false;
             if (pizza[i][j]==1) c++;
         }
     }
