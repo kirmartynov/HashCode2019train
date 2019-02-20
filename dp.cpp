@@ -34,6 +34,19 @@ namespace std
 	};
 };
 
+namespace stuff
+{
+	template<typename ContainerT, typename PredicateT>
+	void erase_if(ContainerT& items, const PredicateT& predicate)
+	{
+		for (auto it=items.begin() ; it != items.end() ; )
+			if (predicate(*it))
+				it = items.erase(it);
+			else
+				++it;
+	}
+};
+
 int main()
 {
 	ios::sync_with_stdio(false);
@@ -101,6 +114,17 @@ int main()
 	for (int y=0 ; y<r ; ++y)
 	for (int x=0 ; x<c ; ++x)
 	{
+		using stuff::erase_if;
+		erase_if(dp, [&](pair<const Shadow, int>& entry)
+		{
+			for (auto& sy : entry.first.first)
+				if (sy >= y)
+					return false;
+			for (auto& sx : entry.first.second)
+				if (sx >= x)
+					return false;
+			return true;
+		});
 		for (auto dyx : rects[y][x])
 		{
 			int area = dyx.first * dyx.second;
@@ -123,5 +147,5 @@ int main()
 	for (auto& entry : dp)
 		score = max(score, entry.second);
 
-	cout << "Score: " << score << "\n";
+	cerr << "Score: " << score << "\n";
 }
