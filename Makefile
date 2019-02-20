@@ -3,7 +3,7 @@ OUTFILES := $(patsubst %.in,%.out,$(INFILES))
 
 all: main.out $(OUTFILES)
 
-main.out:
+main.out: main.cpp
 	g++ -std=c++14 -O2 -o main.out main.cpp
 
 %.out: %.in main.out
