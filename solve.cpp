@@ -1,5 +1,6 @@
 #pragma once
 #include "util.cpp"
+#include "checkpiece.cpp"
 #include <vector>
 
 vector<Rect> solve (Input &input) {

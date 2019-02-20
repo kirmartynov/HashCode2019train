@@ -4,8 +4,8 @@
 
 using namespace std;
 
-bool checkSlice(vector<vector<int>> &pizza, int l, int h, Rect &r) {
-    if ((r.x1<0)||(r.y1<0)||(r.x2>=pizza.length)||(r.y2>=pizza[0].length)||(r.x1>r.x2)||(r.y1>r.r.y2)) return false;
+bool checkSlice(vector<vector<int> > &pizza, int l, int h, Rect r) {
+    if ((r.x1<0)||(r.y1<0)||(r.x2>=pizza.size())||(r.y2>=pizza[0].size())||(r.x1>r.x2)||(r.y1>r.y2)) return false;
     int s = (r.x2-r.x1)*(r.y2-r.y1);
     if (s>h) return false;
     int c = 0;
