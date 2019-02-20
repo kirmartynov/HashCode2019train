@@ -3,4 +3,5 @@
 
 vector<Rect> solve (Input &input)    {
     // fill me
+    
 }
