@@ -40,4 +40,6 @@ vector<Rect> solve (Input &input) {
             }
         }
     }
+
+    return answer;
 }
