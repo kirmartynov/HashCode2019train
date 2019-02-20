@@ -3,8 +3,6 @@
 #include "checkpiece.cpp"
 #include <vector>
 
-using namespace std;
-
 vector<Rect> solve (Input &input) {
     vector<Rect> answer;
 
