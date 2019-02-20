@@ -1,5 +1,6 @@
 #pragma once
 #include "util.cpp"
+#include "checkpiece.cpp"
 #include <vector>
 
 using namespace std;
@@ -19,7 +20,8 @@ vector<Rect> solve (Input &input) {
             int ch = 1;
             while (ch <= input.h && ci + ch - 1 < input.r) {
                 for (int cw = 1; cj + cw - 1 < input.c; ++cw) {
-                    if (checkSlice(input.grid, input.l, input.h, Rect(ci, cj, ci+ch-1, cj+cw-1))) {
+                    Rect r = Rect(ci, cj, ci+ch-1, cj+cw-1);
+                    if (checkSlice(input.grid, input.l, input.h, r)) {
                         answer.push_back(Rect(ci, cj, ci+ch-1, cj+cw-1));
 
                         for (int i = ci; i <= ci + ch - 1; ++i) {
