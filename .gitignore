@@ -27,6 +27,7 @@
 *.lib
 
 .idea/
+outputs/*
 # Executables
 *.exe
 *.out
