@@ -2,13 +2,28 @@
 #include "util.cpp"
 #include "checkpiece.cpp"
 #include <vector>
+#include <algorithm>
 
 vector<Rect> solve (Input &input) {
     vector<Rect> answer;
 
     int ci, cj;
+
+    vector<pair<int, int>> order;
     for (ci = 0; ci < input.r; ++ci) {
         for (cj = 0; cj < input.c; ++cj) {
+            order.push_back(make_pair(ci, cj));
+        }
+    }
+
+    srand(time(NULL));
+
+    random_shuffle(order.begin(), order.end());
+
+    for (int _ = 0; _ < order.size(); ++_) {
+        ci = order[_].first;
+        cj = order[_].second;
+
             if (input.grid[ci][cj] == -1) {
                 continue;
             }
@@ -41,7 +56,6 @@ vector<Rect> solve (Input &input) {
 
                 ++ch;
             }
-        }
     }
 
     return answer;
