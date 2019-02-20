@@ -4,6 +4,12 @@
 #include <vector>
 #include <algorithm>
 
+struct RNG {
+    int operator() (int n) {
+        return std::rand() / (1.0 + RAND_MAX) * n;
+    }
+};
+
 vector<Rect> solve (Input &input) {
     vector<Rect> answer;
 
@@ -16,9 +22,9 @@ vector<Rect> solve (Input &input) {
         }
     }
 
-    srand(time(NULL));
+    srand(time(0));
 
-    random_shuffle(order.begin(), order.end());
+    random_shuffle(order.begin(), order.end(), RNG());
 
     for (int _ = 0; _ < order.size(); ++_) {
         ci = order[_].first;
