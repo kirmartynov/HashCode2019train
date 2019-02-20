@@ -19,7 +19,7 @@ vector<Rect> solve (Input &input) {
             while (ch <= input.h && ci + ch - 1 < input.r) {
                 for (int cw = 1; cj + cw - 1 < input.c; ++cw) {
                     Rect r = Rect(ci, cj, ci+ch-1, cj+cw-1);
-                    if (input.grid[i][j] == -1) {
+                    if (input.grid[ci+ch-1][cj+cw-1] == -1) {
                         break;
                     }
                     if (checkSlice(input.grid, input.l, input.h, r)) {
